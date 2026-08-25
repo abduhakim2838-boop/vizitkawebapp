@@ -52,7 +52,7 @@
         </div>
 
         <div class="auth-hint">
-          <i class="fa-solid fa-circle-info"></i> Standart kirish: <strong>admin</strong> / <strong>admin123</strong>
+          <i class="fa-solid fa-shield-halved"></i> Xavfsiz kirish: SHA-256 shifrlangan parol bilan himoyalangan
         </div>
 
         <button type="submit" class="btn-auth-submit" id="loginBtn">
@@ -541,13 +541,71 @@
 
   <!-- MODAL: ADD / EDIT PRODUCT -->
   <div class="modal-overlay" id="productModal">
-    <div class="modal-card">
+    <div class="modal-card" style="max-width: 700px;">
       <button class="modal-close-btn" onclick="closeProductModal()">&times;</button>
       <h3 class="modal-title" id="productModalHeading">Yangi Sovg'a To'plami Qo'shish</h3>
       <p class="modal-sub">Katalogda aks etuvchi to'liq ma'lumotlarni kiriting</p>
 
       <form id="productForm" onsubmit="handleProductFormSubmit(event)">
         <input type="hidden" id="editProductId" value="">
+
+        <!-- IMAGE SECTION WITH LIVE PREVIEW -->
+        <div class="img-picker-section">
+          <!-- Live Image Preview -->
+          <div class="img-preview-box" id="prodImagePreviewBox">
+            <img id="prodImagePreview" src="" alt="Rasm ko'rinishi" style="display:none;">
+            <div class="img-preview-placeholder" id="prodImagePlaceholder">
+              <i class="fa-solid fa-image"></i>
+              <span>Rasm URL kiriting yoki pastdan tanlang</span>
+            </div>
+          </div>
+
+          <div class="img-input-section">
+            <div class="form-group">
+              <label class="form-label"><i class="fa-solid fa-link"></i> Rasm URL Manzili *</label>
+              <input type="url" id="prodImage" class="form-input" placeholder="https://images.unsplash.com/photo-..." oninput="previewProductImage(this.value)" required>
+            </div>
+
+            <!-- Quick Unsplash Image Picker -->
+            <div class="quick-img-picker">
+              <div class="quick-img-label"><i class="fa-solid fa-bolt"></i> Tezkor Unsplash rasmlar:</div>
+              <div class="quick-img-grid" id="quickImgGrid">
+                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80')" title="Luxury Gift Box">
+                  <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=200&q=60" alt="Gift Box">
+                  <span>Gift Box</span>
+                </div>
+                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80')" title="VIP Luxury">
+                  <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=200&q=60" alt="VIP">
+                  <span>VIP Set</span>
+                </div>
+                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=800&q=80')" title="Business Set">
+                  <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=200&q=60" alt="Business">
+                  <span>Business</span>
+                </div>
+                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1608156639585-b3a032ef9689?auto=format&fit=crop&w=800&q=80')" title="Tech Gadget">
+                  <img src="https://images.unsplash.com/photo-1608156639585-b3a032ef9689?auto=format&fit=crop&w=200&q=60" alt="Tech">
+                  <span>Tech</span>
+                </div>
+                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80')" title="Thermos">
+                  <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=200&q=60" alt="Thermos">
+                  <span>Termos</span>
+                </div>
+                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80')" title="Notebook">
+                  <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=200&q=60" alt="Notebook">
+                  <span>Bloknot</span>
+                </div>
+                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80')" title="Office">
+                  <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=200&q=60" alt="Office">
+                  <span>Ofis</span>
+                </div>
+                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&w=800&q=80')" title="Eco">
+                  <img src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&w=200&q=60" alt="Eco">
+                  <span>Eco</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div class="form-group">
           <label class="form-label">To'plam Nomi *</label>
@@ -577,13 +635,8 @@
           </div>
           <div class="form-group">
             <label class="form-label">Belgi / Badge (Ixtiyoriy)</label>
-            <input type="text" id="prodTag" class="form-input" placeholder="Masalan: 🔥 Top Choice yoki ⭐ Bestseller">
+            <input type="text" id="prodTag" class="form-input" placeholder="🔥 Top Choice">
           </div>
-        </div>
-
-        <div class="form-group">
-          <label class="form-label">Rasm URL Manzili (Unsplash yoki to'g'ridan-to'g'ri link) *</label>
-          <input type="url" id="prodImage" class="form-input" placeholder="https://images.unsplash.com/photo-..." required>
         </div>
 
         <div class="form-group">
@@ -598,7 +651,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-outline" onclick="closeProductModal()">Bekor qilish</button>
-          <button type="submit" class="btn btn-primary" id="saveProductBtn">Saqlash</button>
+          <button type="submit" class="btn btn-primary" id="saveProductBtn"><i class="fa-solid fa-floppy-disk"></i> Saqlash</button>
         </div>
       </form>
     </div>

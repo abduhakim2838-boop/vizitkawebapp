@@ -766,6 +766,7 @@ window.openNewProductModal = function() {
   document.getElementById('productModalHeading').textContent = "Yangi Sovg'a To'plami Qo'shish";
   document.getElementById('editProductId').value = '';
   document.getElementById('productForm').reset();
+  previewProductImage('');
   document.getElementById('productModal').classList.add('active');
 };
 
@@ -783,12 +784,45 @@ window.openEditProductModal = function(id) {
   document.getElementById('prodImage').value = product.image;
   document.getElementById('prodDesc').value = product.desc;
   document.getElementById('prodItems').value = product.items || '';
+  previewProductImage(product.image);
 
   document.getElementById('productModal').classList.add('active');
 };
 
 window.closeProductModal = function() {
   document.getElementById('productModal').classList.remove('active');
+  previewProductImage('');
+};
+
+/* Image Preview & Quick Picker Helpers */
+window.previewProductImage = function(url) {
+  const img = document.getElementById('prodImagePreview');
+  const placeholder = document.getElementById('prodImagePlaceholder');
+  if (!img || !placeholder) return;
+  if (url && url.startsWith('http')) {
+    img.src = url;
+    img.style.display = 'block';
+    placeholder.style.display = 'none';
+    img.onerror = () => {
+      img.style.display = 'none';
+      placeholder.style.display = 'flex';
+    };
+  } else {
+    img.style.display = 'none';
+    img.src = '';
+    placeholder.style.display = 'flex';
+  }
+};
+
+window.selectQuickImage = function(url) {
+  const input = document.getElementById('prodImage');
+  if (input) {
+    input.value = url;
+    previewProductImage(url);
+  }
+  // Highlight selected quick image
+  document.querySelectorAll('.quick-img-item').forEach(el => el.classList.remove('selected'));
+  event.currentTarget.classList.add('selected');
 };
 
 window.handleProductFormSubmit = function(e) {
