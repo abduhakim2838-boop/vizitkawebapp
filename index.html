@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giftify Business — Biznesingiz uchun maxsus korporativ sovg‘alar</title>
+  <meta name="description" content="Kompaniyalar uchun zamonaviy, sifatli va brendingizga mos korporativ sovg‘alar, premium gift boxlar va eksklyuziv biznes to‘plamlari.">
+  <meta name="keywords" content="korporativ sovg'alar, brendlangan mahsulotlar, gift box, VIP sovg'alar, ofis to'plamlari, Toshkent sovg'a">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons for crisp UI visuals -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Ambient Glow Elements -->
+  <div class="ambient-glow ambient-1"></div>
+  <div class="ambient-glow ambient-2"></div>
+  <div class="ambient-glow ambient-3"></div>
+
+  <!-- SITE HEADER / NAVBAR -->
+  <header class="site-header" id="siteHeader">
+    <div class="container header-container">
+      <a href="#" class="brand-logo" id="headerLogo">
+        <div class="logo-icon">
+          <i class="fa-solid fa-gift"></i>
+        </div>
+        <div class="logo-text">
+          <span>GIFTIFY</span>
+          <span class="sub">BUSINESS</span>
+        </div>
+      </a>
+
+      <nav>
+        <ul class="main-nav" id="mainNav">
+          <li><a href="#products" class="nav-link">Mahsulotlar</a></li>
+          <li><a href="#about" class="nav-link">Kompaniya haqida</a></li>
+          <li><a href="#why-us" class="nav-link">Afzalliklar</a></li>
+          <li><a href="#branding" class="nav-link">Brendlash</a></li>
+          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+          <li><a href="#contact" class="nav-link">Kontaktlar</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="btn btn-primary" id="headerOrderBtn" onclick="openOrderModal('Umumiy korporativ sovg‘a so‘rovi')">
+          <i class="fa-solid fa-paper-plane"></i> Buyurtma berish
+        </button>
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Menyuni ochish">
+          <i class="fa-solid fa-bars-staggered"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero-section" id="heroSection">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div class="section-tag">
+          <i class="fa-solid fa-crown"></i> Korporativ Sovg'alar Studiyasi
+        </div>
+        <h1 class="hero-title">
+          Biznesingiz uchun maxsus <span class="gold-gradient-text">korporativ sovg‘alar</span>
+        </h1>
+        <p class="hero-tagline">
+          Kompaniyalar uchun zamonaviy, sifatli va brendingizga mos korporativ sovg‘alarni tayyorlaymiz. Hamkorlar va xodimlaringizda unutilmas taassurot qoldiring.
+        </p>
+
+        <div class="hero-buttons">
+          <a href="#products" class="btn btn-primary btn-lg" id="heroCatalogBtn">
+            <i class="fa-solid fa-boxes-stacked"></i> Katalogni ko‘rish
+          </a>
+          <button class="btn btn-secondary btn-lg" id="heroOrderBtn" onclick="openOrderModal('Hero tezkor buyurtma')">
+            <i class="fa-regular fa-calendar-check"></i> Buyurtma berish
+          </button>
+        </div>
+
+        <!-- Dynamic Statistics -->
+        <div class="hero-stats" id="heroStats">
+          <div class="stat-item">
+            <div class="stat-number" data-count="500">500+</div>
+            <div class="stat-label">Tayyorlangan buyurtmalar</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-count="100">100+</div>
+            <div class="stat-label">Mahsulot turlari</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-count="50">50+</div>
+            <div class="stat-label">Korporativ mijozlar</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number" data-count="3">3+</div>
+            <div class="stat-label">Yillik mukammal tajriba</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3D-styled Visual & Floating Badges with Real Luxury Gift Box -->
+      <div class="hero-visual">
+        <div class="floating-badge badge-top-right">
+          <i class="fa-solid fa-certificate text-gold" style="color: #dfb141;"></i>
+          <span>100% Premium Sifat Kafolati</span>
+        </div>
+        
+        <div class="hero-main-card">
+          <div class="hero-product-preview-real">
+            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80" alt="Executive Royal Box Luxury Gift Set" class="hero-real-img" loading="eager">
+            <div class="hero-img-glass-overlay">
+              <span class="live-pulse-dot"></span> Jonli Tayyorlangan Namunalar
+            </div>
+          </div>
+          
+          <div class="product-meta-row">
+            <div>
+              <div class="product-title-sm">Executive Royal Box</div>
+              <div class="product-subtitle-sm">Smart Termos + Charm Bloknot + Ruchka + VIP Quti</div>
+            </div>
+            <div class="gold-chip"><i class="fa-solid fa-gem"></i> VIP Brending</div>
+          </div>
+        </div>
+
+        <div class="floating-badge badge-bottom-left">
+          <i class="fa-solid fa-truck-fast text-gold" style="color: #dfb141;"></i>
+          <span>O'zbekiston Bo'ylab Yetkazish</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES SECTION -->
+  <section class="categories-section" id="categories">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-layer-group"></i> Mahsulot Toifalari</div>
+        <h2>Har Qanday Tadbir Uchun <span class="gold-gradient-text">6 Asosiy Kategoriya</span></h2>
+        <p>Hamkorlaringiz, xodimlaringiz va VIP mijozlaringiz uchun maxsus saralangan to‘plamlar</p>
+      </div>
+
+      <div class="categories-grid">
+        <!-- 1. Gift Box -->
+        <div class="category-card" onclick="filterByCat('giftbox')">
+          <div class="category-bg-img" style="background-image: url('https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="category-card-inner">
+            <div class="category-icon-box">
+              <i class="fa-solid fa-gift"></i>
+            </div>
+            <h3 class="category-title">Gift Box To'plamlari</h3>
+            <p class="category-desc">Kompaniyalar va nufuzli hamkorlar uchun tayyor, estetik va to'liq brendlangan premium sovg‘a to‘plamlari.</p>
+            <span class="category-link">Mahsulotlarni ko'rish <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- 2. Brendlangan aksessuarlar -->
+        <div class="category-card" onclick="filterByCat('accessories')">
+          <div class="category-bg-img" style="background-image: url('https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="category-card-inner">
+            <div class="category-icon-box">
+              <i class="fa-solid fa-pen-nib"></i>
+            </div>
+            <h3 class="category-title">Brendlangan Aksessuarlar</h3>
+            <p class="category-desc">Metall ruchkalar, charm bloknotlar, aqlli termoslar, powerbanklar va zamonaviy kundalik buyumlar.</p>
+            <span class="category-link">Mahsulotlarni ko'rish <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- 3. Premium sovg'alar -->
+        <div class="category-card" onclick="filterByCat('vip')">
+          <div class="category-bg-img" style="background-image: url('https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="category-card-inner">
+            <div class="category-icon-box">
+              <i class="fa-solid fa-gem"></i>
+            </div>
+            <h3 class="category-title">VIP & Premium Sovg‘alar</h3>
+            <p class="category-desc">VIP mijozlar, ta'sischilar va biznes hamkorlar uchun eksklyuziv materiallardan tayyorlangan hashamatli to'plamlar.</p>
+            <span class="category-link">Mahsulotlarni ko'rish <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- 4. Ofis sovg'alari -->
+        <div class="category-card" onclick="filterByCat('office')">
+          <div class="category-bg-img" style="background-image: url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="category-card-inner">
+            <div class="category-icon-box">
+              <i class="fa-solid fa-briefcase"></i>
+            </div>
+            <h3 class="category-title">Ofis & Welcome Pack</h3>
+            <p class="category-desc">Yangi xodimlar uchun on-boarding to'plamlari, kundalik ofis aksessuarlari va korporativ motivatsiya sovg'alari.</p>
+            <span class="category-link">Mahsulotlarni ko'rish <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- 5. Yangi yil sovg'alari -->
+        <div class="category-card" onclick="filterByCat('newyear')">
+          <div class="category-bg-img" style="background-image: url('https://images.unsplash.com/photo-1512909006721-3d6018887383?auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="category-card-inner">
+            <div class="category-icon-box">
+              <i class="fa-solid fa-snowflake"></i>
+            </div>
+            <h3 class="category-title">Yangi Yil Sovg‘alari</h3>
+            <p class="category-desc">Yangi yil korporativ bayramlari, taqdimotlar va qishki tantanalar uchun maxsus bayramona to‘plamlar.</p>
+            <span class="category-link">Mahsulotlarni ko'rish <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+
+        <!-- 6. Custom Gift -->
+        <div class="category-card" onclick="filterByCat('custom')">
+          <div class="category-bg-img" style="background-image: url('https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&w=600&q=80');"></div>
+          <div class="category-card-inner">
+            <div class="category-icon-box">
+              <i class="fa-solid fa-wand-magic-sparkles"></i>
+            </div>
+            <h3 class="category-title">Custom Gift (Individual)</h3>
+            <p class="category-desc">Sizning brend falsafangiz va byudjetingizga mos noldan loyihalashtirilgan individual sovg'alar.</p>
+            <span class="category-link">Mahsulotlarni ko'rish <i class="fa-solid fa-arrow-right"></i></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED PRODUCTS SECTION -->
+  <section class="products-section" id="products">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-fire"></i> Tanlangan Kolleksiya</div>
+        <h2>Eng Ommabop <span class="gold-gradient-text">Korporativ To‘plamlar</span></h2>
+        <p>Logotipingiz tushirilgan holda buyurtma berishingiz mumkin bo'lgan real fotoli top mahsulotlar</p>
+      </div>
+
+      <!-- Search & Filter Controls -->
+      <div class="catalog-control-bar">
+        <div class="product-search-box">
+          <i class="fa-solid fa-magnifying-glass search-icon"></i>
+          <input type="text" id="productSearchInput" placeholder="Mahsulot nomi yoki toifa bo'yicha qidiring (masalan: termos, bloknot, VIP)..." oninput="handleProductSearch(this.value)">
+          <button class="search-clear-btn" id="searchClearBtn" onclick="clearProductSearch()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="product-filter-tabs">
+          <button class="filter-btn active" data-filter="all">Barchasi (8)</button>
+          <button class="filter-btn" data-filter="giftbox">Gift Box</button>
+          <button class="filter-btn" data-filter="accessories">Aksessuarlar</button>
+          <button class="filter-btn" data-filter="office">Ofis & Welcome</button>
+          <button class="filter-btn" data-filter="vip">VIP Sovg'alar</button>
+        </div>
+      </div>
+
+      <!-- Product Grid (8 Items with REAL HD IMAGES & Quick View) -->
+      <div class="products-grid" id="productGrid">
+        
+        <!-- Product 1 -->
+        <div class="product-card" data-category="giftbox" data-name="Premium Luxury Gift Box" data-price="380000">
+          <div class="product-img-wrapper">
+            <span class="product-badge-tag">🔥 Top Choice</span>
+            <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=600&q=80" alt="Premium Luxury Gift Box" class="product-real-img" loading="lazy">
+            <div class="product-img-hover-actions">
+              <button class="quick-view-btn" onclick="openQuickView(1)" title="Batafsil ko'rish">
+                <i class="fa-solid fa-eye"></i> Tezkor ko'rish
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-price-row">
+              <span class="product-price">380 000 so‘m</span>
+              <span class="product-min-order">Min: 20 dona</span>
+            </div>
+            <h3 class="product-name">Premium Luxury Gift Box</h3>
+            <p class="product-desc">Smart sensorli LED termos, charm bloknot, metall lazer ruchka va luks sovg'a qutisi.</p>
+            <div class="product-items-included">
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Termos</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Bloknot</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Ruchka</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> VIP Quti</span>
+            </div>
+            <div class="product-card-footer">
+              <span class="branding-status"><i class="fa-solid fa-stamp"></i> Bepul logotip</span>
+              <button class="btn btn-sm btn-primary" onclick="openOrderModal('Premium Luxury Gift Box')">Buyurtma</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card" data-category="accessories" data-name="Business Executive Set" data-price="290000">
+          <div class="product-img-wrapper">
+            <span class="product-badge-tag">⭐ Bestseller</span>
+            <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=600&q=80" alt="Business Executive Set" class="product-real-img" loading="lazy">
+            <div class="product-img-hover-actions">
+              <button class="quick-view-btn" onclick="openQuickView(2)" title="Batafsil ko'rish">
+                <i class="fa-solid fa-eye"></i> Tezkor ko'rish
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-price-row">
+              <span class="product-price">290 000 so‘m</span>
+              <span class="product-min-order">Min: 25 dona</span>
+            </div>
+            <h3 class="product-name">Business Executive Set</h3>
+            <p class="product-desc">Italiya charm muqovali bloknot, metall siyohli ruchka va metall vizitka holder.</p>
+            <div class="product-items-included">
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Charm Bloknot</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Lazer Ruchka</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Vizitnica</span>
+            </div>
+            <div class="product-card-footer">
+              <span class="branding-status"><i class="fa-solid fa-wand-magic-sparkles"></i> Gravirovka mavjud</span>
+              <button class="btn btn-sm btn-primary" onclick="openOrderModal('Business Executive Set')">Buyurtma</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card" data-category="accessories" data-name="Tech Gadget 3-in-1 Set" data-price="420000">
+          <div class="product-img-wrapper">
+            <span class="product-badge-tag">⚡ Tech & Smart</span>
+            <img src="https://images.unsplash.com/photo-1608156639585-b3a032ef9689?auto=format&fit=crop&w=600&q=80" alt="Tech Gadget 3-in-1 Set" class="product-real-img" loading="lazy">
+            <div class="product-img-hover-actions">
+              <button class="quick-view-btn" onclick="openQuickView(3)" title="Batafsil ko'rish">
+                <i class="fa-solid fa-eye"></i> Tezkor ko'rish
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-price-row">
+              <span class="product-price">420 000 so‘m</span>
+              <span class="product-min-order">Min: 15 dona</span>
+            </div>
+            <h3 class="product-name">Tech Gadget 3-in-1 Set</h3>
+            <p class="product-desc">10,000 mAh simsiz Powerbank, universal 3-in-1 USB kabel va simsiz sifatli TWS quloqchin.</p>
+            <div class="product-items-included">
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Powerbank</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> 3-in-1 Kabel</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> TWS Quloqchin</span>
+            </div>
+            <div class="product-card-footer">
+              <span class="branding-status"><i class="fa-solid fa-palette"></i> UB-bosma mavjud</span>
+              <button class="btn btn-sm btn-primary" onclick="openOrderModal('Tech Gadget 3-in-1 Set')">Buyurtma</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card" data-category="office" data-name="Modern Office Welcome Set" data-price="260000">
+          <div class="product-img-wrapper">
+            <span class="product-badge-tag">🏢 Ofis Tanlovi</span>
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=600&q=80" alt="Modern Office Welcome Set" class="product-real-img" loading="lazy">
+            <div class="product-img-hover-actions">
+              <button class="quick-view-btn" onclick="openQuickView(4)" title="Batafsil ko'rish">
+                <i class="fa-solid fa-eye"></i> Tezkor ko'rish
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-price-row">
+              <span class="product-price">260 000 so‘m</span>
+              <span class="product-min-order">Min: 30 dona</span>
+            </div>
+            <h3 class="product-name">Modern Office Welcome Set</h3>
+            <p class="product-desc">Sifatli bloknot, lakonik ruchka, matoviy keramika krujka va stol organayzeri to‘plami.</p>
+            <div class="product-items-included">
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Mat Krujka</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Bloknot</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Ruchka</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Organayzer</span>
+            </div>
+            <div class="product-card-footer">
+              <span class="branding-status"><i class="fa-solid fa-stamp"></i> Bepul logotip</span>
+              <button class="btn btn-sm btn-primary" onclick="openOrderModal('Modern Office Welcome Set')">Buyurtma</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card" data-category="accessories" data-name="Premium LED Smart Thermos" data-price="145000">
+          <div class="product-img-wrapper">
+            <span class="product-badge-tag">🌡️ Smart Thermos</span>
+            <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=600&q=80" alt="Premium LED Smart Thermos" class="product-real-img" loading="lazy">
+            <div class="product-img-hover-actions">
+              <button class="quick-view-btn" onclick="openQuickView(5)" title="Batafsil ko'rish">
+                <i class="fa-solid fa-eye"></i> Tezkor ko'rish
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-price-row">
+              <span class="product-price">145 000 so‘m</span>
+              <span class="product-min-order">Min: 30 dona</span>
+            </div>
+            <h3 class="product-name">Premium LED Smart Thermos</h3>
+            <p class="product-desc">Sensorli harorat ekranli, 12 soat issiq/sovuq saqlovchi matoviy po'lat termos (500ml).</p>
+            <div class="product-items-included">
+              <span class="item-pill"><i class="fa-solid fa-check"></i> LED Sensor</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> 500ml Hajm</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Inox Po'lat</span>
+            </div>
+            <div class="product-card-footer">
+              <span class="branding-status"><i class="fa-solid fa-wand-magic-sparkles"></i> Lazer gravirovka</span>
+              <button class="btn btn-sm btn-primary" onclick="openOrderModal('Premium LED Smart Thermos')">Buyurtma</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card" data-category="accessories" data-name="Executive Leather Notebook A5" data-price="120000">
+          <div class="product-img-wrapper">
+            <span class="product-badge-tag">📖 Executive</span>
+            <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=600&q=80" alt="Executive Leather Notebook A5" class="product-real-img" loading="lazy">
+            <div class="product-img-hover-actions">
+              <button class="quick-view-btn" onclick="openQuickView(6)" title="Batafsil ko'rish">
+                <i class="fa-solid fa-eye"></i> Tezkor ko'rish
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-price-row">
+              <span class="product-price">120 000 so‘m</span>
+              <span class="product-min-order">Min: 50 dona</span>
+            </div>
+            <h3 class="product-name">Executive Leather Notebook A5</h3>
+            <p class="product-desc">Korporativ uslubdagi premium yumshoq charm muqova, xatcho'p va magnitli qisqich.</p>
+            <div class="product-items-included">
+              <span class="item-pill"><i class="fa-solid fa-check"></i> A5 format</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> 96 varaq</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Eko charm</span>
+            </div>
+            <div class="product-card-footer">
+              <span class="branding-status"><i class="fa-solid fa-stamp"></i> Bo'rtma / Lazer</span>
+              <button class="btn btn-sm btn-primary" onclick="openOrderModal('Executive Leather Notebook A5')">Buyurtma</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 7 -->
+        <div class="product-card" data-category="vip" data-name="VIP Ambassador Luxury Set" data-price="750000">
+          <div class="product-img-wrapper">
+            <span class="product-badge-tag">👑 VIP Gold</span>
+            <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=600&q=80" alt="VIP Ambassador Luxury Set" class="product-real-img" loading="lazy">
+            <div class="product-img-hover-actions">
+              <button class="quick-view-btn" onclick="openQuickView(7)" title="Batafsil ko'rish">
+                <i class="fa-solid fa-eye"></i> Tezkor ko'rish
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-price-row">
+              <span class="product-price">750 000 so‘m</span>
+              <span class="product-min-order">Min: 10 dona</span>
+            </div>
+            <h3 class="product-name">VIP Ambassador Luxury Set</h3>
+            <p class="product-desc">Tabiiy charmdan portmone, 24k tilla qoplamali peroli ruchka va laklangan yog'och qadoq.</p>
+            <div class="product-items-included">
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Charm Portmone</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Pero Ruchka</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Yog'och Quti</span>
+            </div>
+            <div class="product-card-footer">
+              <span class="branding-status"><i class="fa-solid fa-gem"></i> Eksklyuziv gravirovka</span>
+              <button class="btn btn-sm btn-primary" onclick="openOrderModal('VIP Ambassador Luxury Set')">Buyurtma</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product 8 -->
+        <div class="product-card" data-category="giftbox" data-name="Eco Natural Bamboo Pack" data-price="310000">
+          <div class="product-img-wrapper">
+            <span class="product-badge-tag">🌿 Eco Line</span>
+            <img src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&w=600&q=80" alt="Eco Natural Bamboo Pack" class="product-real-img" loading="lazy">
+            <div class="product-img-hover-actions">
+              <button class="quick-view-btn" onclick="openQuickView(8)" title="Batafsil ko'rish">
+                <i class="fa-solid fa-eye"></i> Tezkor ko'rish
+              </button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-price-row">
+              <span class="product-price">310 000 so‘m</span>
+              <span class="product-min-order">Min: 20 dona</span>
+            </div>
+            <h3 class="product-name">Eco Natural Bamboo Pack</h3>
+            <p class="product-desc">Tabiiy bambuk korpusli termos, kraft qayta ishlangan bloknot va yog'ochli ruchka to'plami.</p>
+            <div class="product-items-included">
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Bambuk Termos</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Kraft Bloknot</span>
+              <span class="item-pill"><i class="fa-solid fa-check"></i> Eko Qadoq</span>
+            </div>
+            <div class="product-card-footer">
+              <span class="branding-status"><i class="fa-solid fa-tree"></i> Yog'ochga lazer bosma</span>
+              <button class="btn btn-sm btn-primary" onclick="openOrderModal('Eco Natural Bamboo Pack')">Buyurtma</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERACTIVE BUDGET & PRICE CALCULATOR SECTION -->
+  <section class="calculator-section" id="calculator">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-calculator"></i> Narx Hisoblagich</div>
+        <h2>Interaktiv <span class="gold-gradient-text">Byudjet Kalkulyatori</span></h2>
+        <p>Buyurtmangiz miqdori va parametrlarini tanlang, tizim avtomatik narx va ulgurji chegirmalarni hisoblab beradi</p>
+      </div>
+
+      <div class="calculator-card">
+        <div class="calculator-grid">
+          
+          <!-- Controls Column -->
+          <div class="calc-controls">
+            <!-- 1. Product select -->
+            <div class="calc-group">
+              <label class="calc-label"><i class="fa-solid fa-gift text-gold"></i> Sovg'a to'plamini tanlang:</label>
+              <select id="calcProductSelect" class="calc-select" onchange="calculateCorporateBudget()">
+                <option value="380000" data-name="Premium Luxury Gift Box" data-min="20" selected>Premium Luxury Gift Box — 380 000 so‘m/dona</option>
+                <option value="290000" data-name="Business Executive Set" data-min="25">Business Executive Set — 290 000 so‘m/dona</option>
+                <option value="420000" data-name="Tech Gadget 3-in-1 Set" data-min="15">Tech Gadget 3-in-1 Set — 420 000 so‘m/dona</option>
+                <option value="260000" data-name="Modern Office Welcome Set" data-min="30">Modern Office Welcome Set — 260 000 so‘m/dona</option>
+                <option value="145000" data-name="Premium LED Smart Thermos" data-min="30">Premium LED Smart Thermos — 145 000 so‘m/dona</option>
+                <option value="120000" data-name="Executive Leather Notebook A5" data-min="50">Executive Leather Notebook A5 — 120 000 so‘m/dona</option>
+                <option value="750000" data-name="VIP Ambassador Luxury Set" data-min="10">VIP Ambassador Luxury Set — 750 000 so‘m/dona</option>
+                <option value="310000" data-name="Eco Natural Bamboo Pack" data-min="20">Eco Natural Bamboo Pack — 310 000 so‘m/dona</option>
+              </select>
+            </div>
+
+            <!-- 2. Quantity slider -->
+            <div class="calc-group">
+              <div class="calc-slider-header">
+                <label class="calc-label"><i class="fa-solid fa-boxes-stacked text-gold"></i> Buyurtma miqdori:</label>
+                <span class="calc-quantity-badge"><span id="calcQuantityDisplay">50</span> dona</span>
+              </div>
+              <input type="range" id="calcQuantityRange" class="calc-range" min="10" max="500" step="5" value="50" oninput="updateQuantityFromSlider(this.value)">
+              <div class="calc-slider-ticks">
+                <span>10 dona</span>
+                <span>100 dona (-5%)</span>
+                <span>250 dona (-10%)</span>
+                <span>500+ dona (-15%)</span>
+              </div>
+            </div>
+
+            <!-- 3. Branding option -->
+            <div class="calc-group">
+              <label class="calc-label"><i class="fa-solid fa-stamp text-gold"></i> Brendlash usuli:</label>
+              <div class="calc-radio-group">
+                <label class="calc-radio-card active">
+                  <input type="radio" name="brandingMethod" value="0" checked onchange="calculateCorporateBudget()">
+                  <div class="radio-content">
+                    <span class="radio-title">Lazer Gravirovka</span>
+                    <span class="radio-sub">Bepul (aksiyada)</span>
+                  </div>
+                </label>
+                <label class="calc-radio-card">
+                  <input type="radio" name="brandingMethod" value="15000" onchange="calculateCorporateBudget()">
+                  <div class="radio-content">
+                    <span class="radio-title">UV To'liq rangli</span>
+                    <span class="radio-sub">+15 000 so'm/dona</span>
+                  </div>
+                </label>
+                <label class="calc-radio-card">
+                  <input type="radio" name="brandingMethod" value="20000" onchange="calculateCorporateBudget()">
+                  <div class="radio-content">
+                    <span class="radio-title">Zarbosma / Relief</span>
+                    <span class="radio-sub">+20 000 so'm/dona</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- 4. Packaging option -->
+            <div class="calc-group">
+              <label class="calc-label"><i class="fa-solid fa-box-open text-gold"></i> Qadoqlash turi:</label>
+              <div class="calc-radio-group">
+                <label class="calc-radio-card active">
+                  <input type="radio" name="packageType" value="0" checked onchange="calculateCorporateBudget()">
+                  <div class="radio-content">
+                    <span class="radio-title">Standart Quti</span>
+                    <span class="radio-sub">Kiritilgan</span>
+                  </div>
+                </label>
+                <label class="calc-radio-card">
+                  <input type="radio" name="packageType" value="25000" onchange="calculateCorporateBudget()">
+                  <div class="radio-content">
+                    <span class="radio-title">Magnitli Luks Quti</span>
+                    <span class="radio-sub">+25 000 so'm</span>
+                  </div>
+                </label>
+                <label class="calc-radio-card">
+                  <input type="radio" name="packageType" value="50000" onchange="calculateCorporateBudget()">
+                  <div class="radio-content">
+                    <span class="radio-title">Tabiiy Yog'och Quti</span>
+                    <span class="radio-sub">+50 000 so'm</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- Result Summary Column -->
+          <div class="calc-summary-panel">
+            <div class="calc-summary-card">
+              <div class="calc-summary-header">
+                <h3>Hisoblangan Byudjet</h3>
+                <span class="calc-status-tag"><i class="fa-solid fa-bolt"></i> Real-vaqtda</span>
+              </div>
+
+              <div class="summary-details">
+                <div class="summary-row">
+                  <span>Tanlangan to'plam:</span>
+                  <strong id="summaryProductName">Premium Luxury Gift Box</strong>
+                </div>
+                <div class="summary-row">
+                  <span>Dona miqdori:</span>
+                  <strong id="summaryQuantity">50 dona</strong>
+                </div>
+                <div class="summary-row">
+                  <span>1 dona yakuniy narxi:</span>
+                  <strong id="summaryUnitCost">380 000 so‘m</strong>
+                </div>
+                <div class="summary-row summary-discount-row">
+                  <span>Ulgurji chegirma:</span>
+                  <strong id="summaryDiscount" class="text-emerald">-0%</strong>
+                </div>
+              </div>
+
+              <div class="summary-total-box">
+                <div class="total-label">Jami Taxminiy Qiymat:</div>
+                <div class="total-amount" id="calcTotalSum">19 000 000 so‘m</div>
+                <div class="total-note">* QQS va brendlash dizayni kiritilgan</div>
+              </div>
+
+              <button class="btn btn-primary btn-block calc-order-btn" onclick="orderFromCalculator()">
+                <i class="fa-solid fa-file-invoice-dollar"></i> Shu Byudjetda Buyurtma Berish
+              </button>
+
+              <div class="calc-perks">
+                <div><i class="fa-solid fa-check text-gold"></i> Bepul 3D maket</div>
+                <div><i class="fa-solid fa-check text-gold"></i> Bepul yetkazish (Toshkent)</div>
+                <div><i class="fa-solid fa-check text-gold"></i> Shartnoma & hisob-faktura</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE BRANDING STUDIO / INTERACTIVE MOCKUP VISUALIZER -->
+  <section class="branding-section" id="branding">
+    <div class="container">
+      <div class="branding-box-wrapper">
+        <div class="branding-layout">
+          
+          <div class="branding-content">
+            <div class="section-tag"><i class="fa-solid fa-stamp"></i> Brendlash Studiyasi</div>
+            <h2>Sovg‘alaringizga <span class="gold-gradient-text">brendingizni qo‘shing</span></h2>
+            <p>
+              Logotipingizni mahsulotlarga zamonaviy va yuqori aniqlikdagi usulda (lazer gravirovka, ultrabinafsha to'liq rangli bosma, bo'rtma yoki ipak bosma) joylashtiramiz.
+            </p>
+
+            <ul class="branding-features-list">
+              <li>
+                <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+                <span><strong>Lazer gravirovka:</strong> Metall va yog'och sirtlarga o'chmas va nafis brendlash</span>
+              </li>
+              <li>
+                <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+                <span><strong>UV to‘liq rangli bosma:</strong> Yorqin, tiniq va yuvilishga chidamli ranglar</span>
+              </li>
+              <li>
+                <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+                <span><strong>Relief & Foil bo‘rtma:</strong> Charm bloknot va qutilar uchun oltin/kumush zar</span>
+              </li>
+              <li>
+                <div class="feature-check-icon"><i class="fa-solid fa-check"></i></div>
+                <span><strong>Bepul dizayn maketi:</strong> Buyurtmadan oldin 3D maketni ko'rib tasdiqlaysiz</span>
+              </li>
+            </ul>
+
+            <button class="btn btn-primary" onclick="openOrderModal('Brendlash xizmati so‘rovi')">
+              <i class="fa-solid fa-palette"></i> Bepul Maket Olish
+            </button>
+          </div>
+
+          <!-- Live Mockup Visualizer Tool -->
+          <div class="mockup-studio" id="mockupStudio">
+            <div class="studio-canvas" id="studioCanvas">
+              
+              <div class="studio-product-model" id="mockupProductModel">
+                <!-- Dynamic SVG model -->
+                <svg id="mockupSvg" viewBox="0 0 160 160" width="160" height="160">
+                  <!-- Default Model: Gift Box -->
+                  <rect x="25" y="25" width="110" height="110" rx="12" fill="#1a233a" stroke="#dfb141" stroke-width="2"/>
+                  <line x1="80" y1="25" x2="80" y2="135" stroke="#fae19c" stroke-width="4"/>
+                  <line x1="25" y1="80" x2="135" y2="80" stroke="#fae19c" stroke-width="4"/>
+                  <circle cx="80" cy="80" r="14" fill="#dfb141"/>
+                </svg>
+
+                <!-- Floating Live Brand Overlay -->
+                <div class="mockup-logo-overlay" id="mockupLogoOverlay">
+                  <i class="fa-solid fa-crown" style="font-size: 0.9rem;"></i>
+                  <span id="mockupLogoText">COMPANY LOGO</span>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="studio-controls">
+              <div class="control-group">
+                <label class="control-label" for="studioLogoInput">Kompaniyangiz nomi yoki logotip matni:</label>
+                <input type="text" id="studioLogoInput" class="studio-input" placeholder="Masalan: PAYME, ARTEL yoki YOUR BRAND" value="YOUR BRAND">
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Mahsulot modelini tanlang:</label>
+                <div class="product-selector-chips">
+                  <button class="model-chip active" data-model="box"><i class="fa-solid fa-box-archive"></i> Gift Box</button>
+                  <button class="model-chip" data-model="thermos"><i class="fa-solid fa-flask"></i> Termos</button>
+                  <button class="model-chip" data-model="notebook"><i class="fa-solid fa-book"></i> Bloknot</button>
+                  <button class="model-chip" data-model="pen"><i class="fa-solid fa-pen"></i> Ruchka</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US SECTION -->
+  <section class="why-us-section" id="why-us">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-shield-halved"></i> Afzalliklarimiz</div>
+        <h2>Nega Aynan <span class="gold-gradient-text">Giftify Business?</span></h2>
+        <p>Biznes hamkorlaringizga yuqori darajadagi hurmatni his ettiradigan 6 ta asosiy ustunligimiz</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-cubes"></i></div>
+          <h3>100+ Mahsulot Turi</h3>
+          <p>Har qanday korporativ tadbir, bayram va byudjetga mos keng turdagi individual va tayyor mahsulotlar katalogi.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-wand-magic"></i></div>
+          <h3>Individual Brendlash</h3>
+          <p>Lazer, bo'rtma, ipak bosma va UV texnologiyalari orqali logotipingizni eng yuqori sifatda aks ettiramiz.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-boxes-packing"></i></div>
+          <h3>Katta Ulgurji Partiyalar</h3>
+          <p>20 donadan 5,000+ donagacha bo'lgan yirik korporativ partiyalarni belgilangan muddatda tez tayyorlash imkoniyati.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-truck-ramp-box"></i></div>
+          <h3>Xavfsiz Yetkazib Berish</h3>
+          <p>Toshkent shahri va butun O‘zbekiston bo‘ylab to‘g‘ridan-to‘g‘ri ofisingizgacha xavfsiz qadoqda yetkazib beramiz.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-compass-drafting"></i></div>
+          <h3>Eksklyuziv Dizayn</h3>
+          <p>Bizning dizaynerlar jamoasi sizning brendbook va korporativ ranglaringizga mos unikal qadoqlashni yaratadi.</p>
+        </div>
+
+        <div class="why-card">
+          <div class="why-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+          <h3>100% Sifat Nazorati</h3>
+          <p>Har bir buyurtma topshirilishidan oldin qo'lda sinchkovlik bilan tekshirilib, nuqsonsiz holda topshiriladi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS / STEPPER SECTION -->
+  <section class="process-section" id="process">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-diagram-project"></i> Ishlash Tizimi</div>
+        <h2>Korporativ Buyurtma <span class="gold-gradient-text">Qanday Ishlaydi?</span></h2>
+        <p>Buyurtma berishdan to tayyor to'plamni qabul qilib olguncha 4 ta oson va aniq bosqich</p>
+      </div>
+
+      <div class="stepper-grid">
+        <div class="step-card">
+          <div class="step-number">01</div>
+          <h3 class="step-title">Mahsulotni Tanlaysiz</h3>
+          <p class="step-desc">Katalogimizdan kerakli mahsulot yoki to‘plamni tanlaysiz yoki individual to'plam tuzishni so'raysiz.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">02</div>
+          <h3 class="step-title">Dizaynni Kelishamiz</h3>
+          <p class="step-desc">Logotipingizni yuborasiz, biz bepul 3D vizual maket tayyorlaymiz va siz bilan to'liq tasdiqlaymiz.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">03</div>
+          <h3 class="step-title">Tayyorlaymiz</h3>
+          <p class="step-desc">Mahsulotlar brendlanadi, premium qutilarga joylanadi va qat'iy sifat nazoratidan o'tkaziladi.</p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">04</div>
+          <h3 class="step-title">Yetkazib Beramiz</h3>
+          <p class="step-desc">Tayyorlangan to'liq buyurtmani kelishilgan sanada to'g'ridan-to'g'ri ofisingizga yetkazib beramiz.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO SECTION (REAL HD PHOTOGRAPHY) -->
+  <section class="portfolio-section" id="portfolio">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-tag"><i class="fa-solid fa-images"></i> Real Ishlarimiz</div>
+        <h2>Hamkorlarimiz Uchun <span class="gold-gradient-text">Tayyorlangan Sovg‘alar</span></h2>
+        <p>Yetakchi banklar, IT kompaniyalar va korporatsiyalar uchun amalga oshirilgan real loyihalar</p>
+      </div>
+
+      <div class="portfolio-grid">
+        <!-- Case 1 -->
+        <div class="portfolio-card">
+          <div class="portfolio-img-box">
+            <span class="portfolio-badge">IT FinTech</span>
+            <img src="https://images.unsplash.com/photo-1513885535751-8b9238bd345a?auto=format&fit=crop&w=800&q=80" alt="FinTech New Year VIP Box" class="portfolio-real-img" loading="lazy">
+          </div>
+          <div class="portfolio-body">
+            <h3 class="portfolio-title">FinTech New Year VIP Box</h3>
+            <p class="portfolio-desc">250 dona VIP mijozlar uchun maxsus qora matoviy qutilarda brendlangan to'plam.</p>
+            <div class="client-tag"><i class="fa-solid fa-building"></i> 250 dona • Lazer & Zarbosma</div>
+          </div>
+        </div>
+
+        <!-- Case 2 -->
+        <div class="portfolio-card">
+          <div class="portfolio-img-box">
+            <span class="portfolio-badge">Banking</span>
+            <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=800&q=80" alt="Bank Xodimlari Onboarding Seti" class="portfolio-real-img" loading="lazy">
+          </div>
+          <div class="portfolio-body">
+            <h3 class="portfolio-title">Bank Xodimlari Onboarding Seti</h3>
+            <p class="portfolio-desc">Barcha yangi filial xodimlari uchun korporativ ranglardagi kundalik aksessuarlar.</p>
+            <div class="client-tag"><i class="fa-solid fa-building"></i> 500 dona • UB-bosma</div>
+          </div>
+        </div>
+
+        <!-- Case 3 -->
+        <div class="portfolio-card">
+          <div class="portfolio-img-box">
+            <span class="portfolio-badge">Logistics & Auto</span>
+            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=800&q=80" alt="Premium Avto va Sayohat To'plami" class="portfolio-real-img" loading="lazy">
+          </div>
+          <div class="portfolio-body">
+            <h3 class="portfolio-title">Premium Avto & Sayohat To'plami</h3>
+            <p class="portfolio-desc">Xalqaro hamkorlar forumi uchun tayyorlangan charm qoplamali termos va gadjetlar.</p>
+            <div class="client-tag"><i class="fa-solid fa-building"></i> 180 dona • Gravirovka</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARTNERS LOGO CAROUSEL -->
+  <section class="partners-section" id="partners">
+    <div class="container">
+      <div class="partners-heading">Biz Bilan Ishlagan Yetakchi Kompaniyalar</div>
+      <div class="partners-track-wrapper">
+        <div class="partners-track">
+          <!-- Item 1 -->
+          <div class="partner-logo-item">
+            <div class="partner-icon-circle"><i class="fa-solid fa-landmark"></i></div>
+            <span>ORIENT HOLDING</span>
+          </div>
+          <!-- Item 2 -->
+          <div class="partner-logo-item">
+            <div class="partner-icon-circle"><i class="fa-solid fa-microchip"></i></div>
+            <span>TECHNO PARK</span>
+          </div>
+          <!-- Item 3 -->
+          <div class="partner-logo-item">
+            <div class="partner-icon-circle"><i class="fa-solid fa-plane-departure"></i></div>
+            <span>GLOBAL AIRWAYS</span>
+          </div>
+          <!-- Item 4 -->
+          <div class="partner-logo-item">
+            <div class="partner-icon-circle"><i class="fa-solid fa-wallet"></i></div>
+            <span>FINANCE CAPITAL</span>
+          </div>
+          <!-- Item 5 -->
+          <div class="partner-logo-item">
+            <div class="partner-icon-circle"><i class="fa-solid fa-building-columns"></i></div>
+            <span>PREMIER BANK</span>
+          </div>
+          <!-- Item 6 -->
+          <div class="partner-logo-item">
+            <div class="partner-icon-circle"><i class="fa-solid fa-shield-virus"></i></div>
+            <span>INSURANCE GROUP</span>
+          </div>
+
+          <!-- Duplicate for infinite seamless scroll -->
+          <div class="partner-logo-item">
+            <div class="partner-icon-circle"><i class="fa-solid fa-landmark"></i></div>
+            <span>ORIENT HOLDING</span>
+          </div>
+          <div class="partner-logo-item">
+            <div class="partner-icon-circle"><i class="fa-solid fa-microchip"></i></div>
+            <span>TECHNO PARK</span>
+          </div>
+          <div class="partner-logo-item">
+            <div class="partner-icon-circle"><i class="fa-solid fa-plane-departure"></i></div>
+            <span>GLOBAL AIRWAYS</span>
+          </div>
+          <div class="partner-logo-item">
+            <div class="partner-icon-circle"><i class="fa-solid fa-wallet"></i></div>
+            <span>FINANCE CAPITAL</span>
+          </div>
+          <div class="partner-logo-item">
+            <div class="partner-icon-circle"><i class="fa-solid fa-building-columns"></i></div>
+            <span>PREMIER BANK</span>
+          </div>
+          <div class="partner-logo-item">
+            <div class="partner-icon-circle"><i class="fa-solid fa-shield-virus"></i></div>
+            <span>INSURANCE GROUP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER SECTION -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-banner">
+        <h2>Kompaniyangiz uchun <span class="gold-gradient-text">maxsus sovg‘a tayyorlaymiz</span></h2>
+        <p>Buyurtmangiz hajmi va talablarini ayting — sizga eng mos keluvchi eksklyuziv to‘plam va narx taklifini 15 daqiqada taqdim etamiz.</p>
+        <a href="#contact" class="btn btn-primary btn-lg" id="ctaMainBtn">
+          <i class="fa-solid fa-comments"></i> Buyurtma Qoldirish
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT & ORDER FORM SECTION -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="contact-grid">
+        
+        <!-- Contact Info & Direct Links -->
+        <div class="contact-info-panel" id="about">
+          <div class="section-tag"><i class="fa-solid fa-headset"></i> Bog'lanish</div>
+          <h3>Kompaniya Bilan <span class="gold-gradient-text">Aloqa</span></h3>
+          <p>Menejerimiz sizning so'rovingiz bo'yicha namunalar, katalog va tijoriy taklifni darhol taqdim etadi.</p>
+
+          <div class="direct-contacts-list">
+            <a href="tel:+998901234567" class="contact-item-link">
+              <div class="contact-icon-wrapper"><i class="fa-solid fa-phone"></i></div>
+              <div class="contact-details">
+                <span class="contact-lbl">Telefon raqam</span>
+                <span class="contact-val">+998 (90) 123-45-67</span>
+              </div>
+            </a>
+
+            <a href="https://t.me/botirjonov_social" target="_blank" rel="noopener" class="contact-item-link">
+              <div class="contact-icon-wrapper"><i class="fa-brands fa-telegram"></i></div>
+              <div class="contact-details">
+                <span class="contact-lbl">Telegram orqali tezkor</span>
+                <span class="contact-val">@botirjonov_social</span>
+              </div>
+            </a>
+
+            <a href="https://instagram.com/giftify_business" target="_blank" rel="noopener" class="contact-item-link">
+              <div class="contact-icon-wrapper"><i class="fa-brands fa-instagram"></i></div>
+              <div class="contact-details">
+                <span class="contact-lbl">Instagram profil</span>
+                <span class="contact-val">@giftify_business</span>
+              </div>
+            </a>
+
+            <a href="mailto:info@giftify.uz" class="contact-item-link">
+              <div class="contact-icon-wrapper"><i class="fa-solid fa-envelope"></i></div>
+              <div class="contact-details">
+                <span class="contact-lbl">Rasmiy Email</span>
+                <span class="contact-val">info@giftify.uz</span>
+              </div>
+            </a>
+
+            <div class="contact-item-link" style="cursor: default;">
+              <div class="contact-icon-wrapper"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="contact-details">
+                <span class="contact-lbl">Bosh Ofis & Showroom</span>
+                <span class="contact-val">Toshkent sh., Amir Temur shoh ko'chasi, 107B</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Corporate Order Form -->
+        <div class="form-card">
+          <h3 class="form-title">Korporativ <span class="gold-gradient-text">So‘rov Yuborish</span></h3>
+          <p class="form-subtitle">Quyidagi formani to‘ldiring, mutaxassisimiz siz bilan 15 daqiqada bog‘lanadi</p>
+
+          <form id="corporateOrderForm" onsubmit="handleFormSubmit(event)">
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="clientName">Ismingiz *</label>
+                <input type="text" id="clientName" class="form-input" placeholder="Masalan: Botirjonov G." required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="clientPhone">Telefon raqamingiz *</label>
+                <input type="tel" id="clientPhone" class="form-input" placeholder="+998 (90) 123-45-67" required>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-group">
+                <label class="form-label" for="companyName">Kompaniya nomi *</label>
+                <input type="text" id="companyName" class="form-input" placeholder="Masalan: Orient Tech MCHJ" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="productSelect">Mahsulot turi</label>
+                <select id="productSelect" class="form-select">
+                  <option value="Premium Luxury Gift Box">Premium Luxury Gift Box</option>
+                  <option value="Business Executive Set">Business Executive Set</option>
+                  <option value="Tech Gadget 3-in-1 Set">Tech Gadget 3-in-1 Set</option>
+                  <option value="Modern Office Welcome Set">Modern Office Welcome Set</option>
+                  <option value="Premium LED Smart Thermos">Premium LED Smart Thermos</option>
+                  <option value="Executive Leather Notebook A5">Executive Leather Notebook A5</option>
+                  <option value="VIP Ambassador Luxury Set">VIP Ambassador Luxury Set</option>
+                  <option value="Eco Natural Bamboo Pack">Eco Natural Bamboo Pack</option>
+                  <option value="Individual Custom Gift">Individual Custom Gift</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="orderQuantity">Taxminiy buyurtma soni (dona)</label>
+              <input type="number" id="orderQuantity" class="form-input" placeholder="Masalan: 50" min="10" value="50">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="orderComments">Qo‘shimcha ma’lumot / Izoh</label>
+              <textarea id="orderComments" class="form-textarea" placeholder="Logotip tushirish usuli, yetkazish sanasi yoki maxsus talablaringiz..."></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-submit-btn" id="submitFormBtn">
+              <i class="fa-solid fa-paper-plane"></i> So‘rov Yuborish
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- QUICK ORDER MODAL -->
+  <div class="modal-overlay" id="orderModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeOrderModal()">&times;</button>
+      <h3 class="form-title" style="margin-bottom: 6px;">Tezkor <span class="gold-gradient-text">Buyurtma Berish</span></h3>
+      <p class="form-subtitle" id="modalProductTarget" style="margin-bottom: 20px;">Tanlangan mahsulot: Umumiy so'rov</p>
+
+      <form id="modalOrderForm" onsubmit="handleModalSubmit(event)">
+        <div class="form-group">
+          <label class="form-label">Ismingiz *</label>
+          <input type="text" id="modalName" class="form-input" placeholder="Ismingizni kiriting" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Telefon raqamingiz *</label>
+          <input type="tel" id="modalPhone" class="form-input" placeholder="+998 90 123 45 67" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Kompaniya nomi</label>
+          <input type="text" id="modalCompany" class="form-input" placeholder="Kompaniyangiz nomi">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Taxminiy miqdor (dona)</label>
+          <input type="number" id="modalQuantity" class="form-input" value="30" min="10">
+        </div>
+
+        <button type="submit" class="btn btn-primary form-submit-btn" style="margin-top: 10px;">
+          <i class="fa-solid fa-check"></i> Tasdiqlash va Yuborish
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- PRODUCT QUICK VIEW MODAL -->
+  <div class="modal-overlay" id="quickViewModal">
+    <div class="modal-card quick-view-card">
+      <button class="modal-close-btn" onclick="closeQuickView()">&times;</button>
+      
+      <div class="quick-view-grid">
+        <div class="qv-image-box">
+          <img src="" alt="Product view" id="qvImage" class="qv-img">
+          <span class="qv-tag" id="qvTag">VIP Tanlov</span>
+        </div>
+        
+        <div class="qv-details">
+          <h3 id="qvTitle" class="qv-title">Mahsulot Nomi</h3>
+          <div class="qv-price-row">
+            <span id="qvPrice" class="qv-price">0 so'm</span>
+            <span id="qvMinOrder" class="qv-min">Min: 20 dona</span>
+          </div>
+          <p id="qvDesc" class="qv-desc">Tavsif</p>
+          
+          <div class="qv-section-label">To'plam tarkibi:</div>
+          <div id="qvItems" class="qv-items-wrap"></div>
+
+          <div class="qv-section-label" style="margin-top: 15px;">Brendlash imkoniyatlari:</div>
+          <div class="qv-branding-badge"><i class="fa-solid fa-circle-check text-gold"></i> Lazer gravirovka, UV-pechat va Zarbosma bepul maket bilan</div>
+
+          <div class="qv-actions">
+            <button class="btn btn-primary btn-block" id="qvOrderBtn" onclick="orderFromQuickView()">
+              <i class="fa-solid fa-paper-plane"></i> Ushbu To'plamga Buyurtma Berish
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIVE SOCIAL PROOF SALES TOAST NOTIFICATION -->
+  <div class="live-sale-toast" id="liveSaleToast">
+    <div class="live-toast-icon"><i class="fa-solid fa-gift"></i></div>
+    <div class="live-toast-body">
+      <div class="live-toast-company" id="liveToastCompany">Orient Holding</div>
+      <div class="live-toast-text" id="liveToastText">50 ta Premium Gift Box buyurtma qildi</div>
+      <div class="live-toast-time" id="liveToastTime">2 daqiqa oldin</div>
+    </div>
+    <button class="live-toast-close" onclick="dismissLiveToast()">&times;</button>
+  </div>
+
+  <!-- TOAST NOTIFICATION FOR FORM SUBMISSIONS -->
+  <div class="toast-notification" id="toastNotification">
+    <div class="toast-icon"><i class="fa-solid fa-circle-check"></i></div>
+    <div class="toast-content">
+      <h4 style="font-size: 0.95rem; font-weight: 700; color: #fff;">So‘rovingiz muvaffaqiyatli qabul qilindi!</h4>
+      <p style="font-size: 0.8rem; color: #94a3b8;">15 daqiqa ichida mutaxassisimiz siz bilan bog‘lanadi.</p>
+    </div>
+  </div>
+
+  <!-- FLOATING QUICK CONTACT BAR -->
+  <div class="floating-quick-bar">
+    <a href="https://t.me/botirjonov_social" target="_blank" rel="noopener" class="float-btn float-telegram" title="Telegramda yozish">
+      <i class="fa-brands fa-telegram"></i>
+      <span class="float-tooltip">Telegramda tezkor aloqa</span>
+    </a>
+    <a href="tel:+998901234567" class="float-btn float-phone" title="Qo'ng'iroq qilish">
+      <i class="fa-solid fa-phone"></i>
+      <span class="float-tooltip">+998 90 123 45 67</span>
+    </a>
+    <button class="float-btn float-order" onclick="openOrderModal('Suzuvchi tugma orqali buyurtma')" title="Tezkor Buyurtma">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span class="float-tooltip">Tezkor Buyurtma</span>
+    </button>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-col footer-brand">
+          <a href="#" class="brand-logo">
+            <div class="logo-icon">
+              <i class="fa-solid fa-gift"></i>
+            </div>
+            <div class="logo-text">
+              <span>GIFTIFY</span>
+              <span class="sub">BUSINESS</span>
+            </div>
+          </a>
+          <p>O‘zbekistondagi nufuzli biznes va korporatsiyalar uchun zamonaviy, sifatli va unutilmas sovg‘a to‘plamlarini ishlab chiqaruvchi rasmiy studiya.</p>
+          <div class="social-links-row">
+            <a href="https://t.me/botirjonov_social" target="_blank" rel="noopener" class="social-btn" aria-label="Telegram"><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://instagram.com/giftify_business" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="mailto:info@giftify.uz" class="social-btn" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Katalog</h4>
+          <ul class="footer-links">
+            <li><a href="#products" onclick="filterByCat('giftbox')">Gift Box To'plamlar</a></li>
+            <li><a href="#products" onclick="filterByCat('accessories')">Aksessuarlar</a></li>
+            <li><a href="#products" onclick="filterByCat('vip')">VIP Sovg‘alar</a></li>
+            <li><a href="#products" onclick="filterByCat('office')">Ofis & Welcome Pack</a></li>
+            <li><a href="#calculator">Narx Hisoblagich</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Kompaniya</h4>
+          <ul class="footer-links">
+            <li><a href="#about">Kompaniya haqida</a></li>
+            <li><a href="#why-us">Bizning afzalliklar</a></li>
+            <li><a href="#branding">Brendlash turlari</a></li>
+            <li><a href="#process">Ishlash jarayoni</a></li>
+            <li><a href="#portfolio">Mijozlarimiz portfolio</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Aloqa & Buyurtma</h4>
+          <ul class="footer-links">
+            <li><a href="tel:+998901234567"><i class="fa-solid fa-phone" style="color: #dfb141; margin-right: 8px;"></i> +998 90 123 45 67</a></li>
+            <li><a href="mailto:info@giftify.uz"><i class="fa-solid fa-envelope" style="color: #dfb141; margin-right: 8px;"></i> info@giftify.uz</a></li>
+            <li><a href="https://t.me/botirjonov_social" target="_blank" rel="noopener"><i class="fa-brands fa-telegram" style="color: #dfb141; margin-right: 8px;"></i> @botirjonov_social</a></li>
+            <li><span style="color: #94a3b8; font-size: 0.85rem;"><i class="fa-solid fa-location-dot" style="color: #dfb141; margin-right: 8px;"></i> Toshkent sh., A. Temur 107B</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 Giftify Business. Barcha huquqlar himoyalangan.</div>
+        <div>
+          Premium Corporate Gifts & Branding Studio • 
+          <a href="https://t.me/botirjonov_social" style="color: #fae19c; text-decoration: none; margin-right: 12px;">@botirjonov_social</a> •
+          <a href="admin.html" target="_blank" style="color: #94a3b8; text-decoration: none; font-size: 0.8rem;"><i class="fa-solid fa-lock" style="font-size: 0.75rem;"></i> Admin Portal</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Cloud Database Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
+
+  <!-- Main JavaScript File -->
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giftify Business — Admin Boshqaruv Paneli</title>
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Chart.js for Beautiful Analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Admin Stylesheet -->
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+  <!-- LOGIN SCREEN (AUTH MODAL) -->
+  <div class="auth-wrapper" id="authScreen">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <div class="logo-icon"><i class="fa-solid fa-gift"></i></div>
+        <div class="logo-text">
+          <span>GIFTIFY</span>
+          <span class="sub">ADMIN PORTAL</span>
+        </div>
+      </div>
+      <h2 class="auth-title">Tizimga Kirish</h2>
+      <p class="auth-subtitle">Korporativ sovg'alar platformasi boshqaruv paneli</p>
+
+      <form id="adminLoginForm" onsubmit="handleAdminLogin(event)">
+        <div class="auth-group">
+          <label for="adminUsername"><i class="fa-solid fa-user"></i> Login</label>
+          <input type="text" id="adminUsername" class="auth-input" placeholder="admin" value="admin" required>
+        </div>
+
+        <div class="auth-group">
+          <label for="adminPassword"><i class="fa-solid fa-lock"></i> Parol</label>
+          <div class="password-wrapper">
+            <input type="password" id="adminPassword" class="auth-input" placeholder="admin123" value="admin123" required>
+            <button type="button" class="toggle-pwd-btn" onclick="togglePasswordVisibility()"><i class="fa-solid fa-eye" id="pwdEyeIcon"></i></button>
+          </div>
+        </div>
+
+        <div class="auth-hint">
+          <i class="fa-solid fa-circle-info"></i> Standart kirish: <strong>admin</strong> / <strong>admin123</strong>
+        </div>
+
+        <button type="submit" class="btn-auth-submit" id="loginBtn">
+          <i class="fa-solid fa-arrow-right-to-bracket"></i> Tizimga Kirish
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ADMIN APP LAYOUT (SHOWN AFTER LOGIN) -->
+  <div class="admin-app" id="adminApp" style="display: none;">
+    
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="brand-logo" title="Saytga o'tish">
+          <div class="logo-icon"><i class="fa-solid fa-gift"></i></div>
+          <div class="logo-text">
+            <span>GIFTIFY</span>
+            <span class="sub">BUSINESS</span>
+          </div>
+        </a>
+        <button class="sidebar-close-btn" id="sidebarCloseBtn" onclick="toggleMobileSidebar()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="admin-profile-pill">
+        <div class="admin-avatar"><i class="fa-solid fa-user-tie"></i></div>
+        <div class="admin-info">
+          <div class="admin-name" id="currentAdminName">Administrator</div>
+          <div class="admin-role">Super Admin</div>
+        </div>
+        <div class="admin-status-dot" title="Onlayn"></div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-section-title">ASOSIY MENYU</div>
+        <ul class="nav-list">
+          <li>
+            <button class="nav-item active" data-tab="dashboard" onclick="switchTab('dashboard')">
+              <i class="fa-solid fa-chart-pie"></i>
+              <span>Boshqaruv Paneli</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-tab="orders" onclick="switchTab('orders')">
+              <i class="fa-solid fa-inbox"></i>
+              <span>Arizalar & Buyurtmalar</span>
+              <span class="nav-badge" id="newOrdersBadge">0</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-tab="products" onclick="switchTab('products')">
+              <i class="fa-solid fa-boxes-stacked"></i>
+              <span>Mahsulotlar Katalogi</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-tab="calculator-config" onclick="switchTab('calculator-config')">
+              <i class="fa-solid fa-calculator"></i>
+              <span>Kalkulyator Sozlamalari</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item" data-tab="settings" onclick="switchTab('settings')">
+              <i class="fa-solid fa-gear"></i>
+              <span>Tizim Sozlamalari</span>
+            </button>
+          </li>
+        </ul>
+
+        <div class="nav-section-title">TEZKOR HAVOLALAR</div>
+        <ul class="nav-list">
+          <li>
+            <a href="index.html" target="_blank" class="nav-item">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              <span>Saytni Ko'rish</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://t.me/botirjonov_social" target="_blank" class="nav-item">
+              <i class="fa-brands fa-telegram"></i>
+              <span>Telegram Bog'lanish</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="btn-logout" onclick="handleAdminLogout()">
+          <i class="fa-solid fa-power-off"></i> Chiqish
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="admin-main">
+      
+      <!-- TOPBAR -->
+      <header class="admin-topbar">
+        <div class="topbar-left">
+          <button class="mobile-sidebar-toggle" onclick="toggleMobileSidebar()">
+            <i class="fa-solid fa-bars-staggered"></i>
+          </button>
+          <div class="topbar-title-wrap">
+            <h1 class="topbar-title" id="pageHeading">Boshqaruv Paneli</h1>
+            <span class="topbar-sub" id="pageSubHeading">Kompaniya statistikasi va so'nggi arizalar</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Quick Search -->
+          <div class="topbar-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="globalSearchInput" placeholder="Arizalar yoki mijozlarni qidirish..." oninput="handleGlobalSearch(this.value)">
+          </div>
+
+          <!-- Quick Actions -->
+          <button class="topbar-btn" onclick="openNewProductModal()" title="Yangi Mahsulot Qo'shish">
+            <i class="fa-solid fa-plus"></i> <span class="hide-mobile">Mahsulot</span>
+          </button>
+
+          <button class="topbar-btn" onclick="exportOrdersToCSV()" title="Arizalarni yuklab olish">
+            <i class="fa-solid fa-download"></i> <span class="hide-mobile">Eksport CSV</span>
+          </button>
+
+          <a href="index.html" target="_blank" class="topbar-icon-btn" title="Saytga o'tish">
+            <i class="fa-solid fa-globe"></i>
+          </a>
+        </div>
+      </header>
+
+      <!-- VIEW CONTAINER -->
+      <div class="admin-content-container">
+
+        <!-- ================================================================= -->
+        <!-- TAB 1: DASHBOARD OVERVIEW -->
+        <!-- ================================================================= -->
+        <section class="tab-view active" id="tab-dashboard">
+          
+          <!-- KPI Stats Grid -->
+          <div class="kpi-grid">
+            <div class="kpi-card kpi-gold">
+              <div class="kpi-icon"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+              <div class="kpi-content">
+                <span class="kpi-label">Jami Arizalar Soni</span>
+                <h3 class="kpi-value" id="kpiTotalOrders">0</h3>
+                <span class="kpi-trend text-emerald"><i class="fa-solid fa-arrow-trend-up"></i> Barcha tushgan so'rovlar</span>
+              </div>
+            </div>
+
+            <div class="kpi-card kpi-emerald">
+              <div class="kpi-icon"><i class="fa-solid fa-bell"></i></div>
+              <div class="kpi-content">
+                <span class="kpi-label">Yangi (Ko'rib chiqilmagan)</span>
+                <h3 class="kpi-value" id="kpiNewOrders">0</h3>
+                <span class="kpi-trend text-gold"><i class="fa-solid fa-clock"></i> Tezkor aloqaga chiqish kerak</span>
+              </div>
+            </div>
+
+            <div class="kpi-card kpi-blue">
+              <div class="kpi-icon"><i class="fa-solid fa-wallet"></i></div>
+              <div class="kpi-content">
+                <span class="kpi-label">Taxminiy Buyurtma Hajmi</span>
+                <h3 class="kpi-value" id="kpiTotalRevenue">0 so‘m</h3>
+                <span class="kpi-trend text-emerald"><i class="fa-solid fa-chart-line"></i> Pipeline byudjeti</span>
+              </div>
+            </div>
+
+            <div class="kpi-card kpi-purple">
+              <div class="kpi-icon"><i class="fa-solid fa-gift"></i></div>
+              <div class="kpi-content">
+                <span class="kpi-label">Faol Mahsulotlar</span>
+                <h3 class="kpi-value" id="kpiActiveProducts">8</h3>
+                <span class="kpi-trend"><i class="fa-solid fa-tag"></i> 6 xil toifada</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Charts Row -->
+          <div class="dashboard-charts-grid">
+            <div class="card-box chart-box-main">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Arizalar Statistikasi</h3>
+                  <p class="card-subtitle">Oxirgi 7 kunlik arizalar oqimi dinamikasi</p>
+                </div>
+                <div class="card-actions">
+                  <span class="badge-live"><i class="fa-solid fa-circle"></i> Jonli</span>
+                </div>
+              </div>
+              <div class="chart-canvas-wrapper">
+                <canvas id="leadsTrendChart"></canvas>
+              </div>
+            </div>
+
+            <div class="card-box chart-box-side">
+              <div class="card-header">
+                <div>
+                  <h3 class="card-title">Top Sovg'a Turlari</h3>
+                  <p class="card-subtitle">Mijozlar eng ko'p so'ragan to'plamlar</p>
+                </div>
+              </div>
+              <div class="chart-canvas-wrapper donut-chart-wrap">
+                <canvas id="productsShareChart"></canvas>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Leads Table -->
+          <div class="card-box" style="margin-top: 24px;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">So'nggi Kelib Tushgan Arizalar</h3>
+                <p class="card-subtitle">Sayt formasi va kalkulyator orqali yuborilgan buyurtmalar</p>
+              </div>
+              <div class="card-actions">
+                <button class="btn-sm btn-outline" onclick="switchTab('orders')">
+                  Barcha arizalarni ko'rish <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table" id="dashboardRecentTable">
+                <thead>
+                  <tr>
+                    <th>Mijoz & Kompaniya</th>
+                    <th>Telefon</th>
+                    <th>Sovg'a To'plami</th>
+                    <th>Miqdor</th>
+                    <th>Holat</th>
+                    <th>Sana</th>
+                    <th>Amallar</th>
+                  </tr>
+                </thead>
+                <tbody id="dashboardOrdersTbody">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 2: ALL ORDERS & LEADS -->
+        <!-- ================================================================= -->
+        <section class="tab-view" id="tab-orders">
+          
+          <div class="card-box">
+            <div class="table-toolbar">
+              
+              <!-- Filter tabs -->
+              <div class="order-status-tabs">
+                <button class="status-tab-btn active" data-status="all" onclick="filterOrdersByStatus('all')">
+                  Barchasi (<span id="countStatusAll">0</span>)
+                </button>
+                <button class="status-tab-btn" data-status="yangi" onclick="filterOrdersByStatus('yangi')">
+                  🔴 Yangi (<span id="countStatusNew">0</span>)
+                </button>
+                <button class="status-tab-btn" data-status="jarayonda" onclick="filterOrdersByStatus('jarayonda')">
+                  🟡 Jarayonda (<span id="countStatusProcess">0</span>)
+                </button>
+                <button class="status-tab-btn" data-status="bajarildi" onclick="filterOrdersByStatus('bajarildi')">
+                  🟢 Bajarildi (<span id="countStatusDone">0</span>)
+                </button>
+              </div>
+
+              <!-- Search and Add Mock -->
+              <div class="table-actions-right">
+                <button class="btn-sm btn-outline" onclick="addMockLead()" title="Sinov uchun arizani simulyatsiya qilish">
+                  <i class="fa-solid fa-plus-circle"></i> + Sinov Arizasi Qo'shish
+                </button>
+                <button class="btn-sm btn-primary" onclick="exportOrdersToCSV()">
+                  <i class="fa-solid fa-file-excel"></i> Excel (CSV)
+                </button>
+              </div>
+            </div>
+
+            <div class="table-responsive">
+              <table class="admin-table">
+                <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Mijoz Ismi</th>
+                    <th>Kompaniya Nomi</th>
+                    <th>Telefon</th>
+                    <th>Tanlangan Sovg'a</th>
+                    <th>Miqdor</th>
+                    <th>Izoh / Byudjet</th>
+                    <th>Holat</th>
+                    <th>Sana & Vaqt</th>
+                    <th style="text-align: right;">Amallar</th>
+                  </tr>
+                </thead>
+                <tbody id="allOrdersTbody">
+                  <!-- Injected via JS -->
+                </tbody>
+              </table>
+            </div>
+
+            <div class="table-empty-state" id="ordersEmptyState" style="display: none;">
+              <div class="empty-icon"><i class="fa-solid fa-inbox"></i></div>
+              <h4>Arizalar topilmadi</h4>
+              <p>Hozircha tanlangan parametr bo'yicha buyurtmalar mavjud emas.</p>
+            </div>
+
+          </div>
+
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 3: PRODUCTS & PRICING -->
+        <!-- ================================================================= -->
+        <section class="tab-view" id="tab-products">
+          
+          <div class="products-tab-header">
+            <div>
+              <h2 class="section-title">Mahsulotlar Katalogi Boshqaruvi</h2>
+              <p class="section-desc">Saytdagi barcha sovg'a to'plamlari, narxlar va qismlarni boshqaring</p>
+            </div>
+            <button class="btn btn-primary" onclick="openNewProductModal()">
+              <i class="fa-solid fa-plus"></i> Yangi To'plam Qo'shish
+            </button>
+          </div>
+
+          <div class="admin-products-grid" id="adminProductsGrid">
+            <!-- Injected via JS -->
+          </div>
+
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 4: CALCULATOR SETTINGS -->
+        <!-- ================================================================= -->
+        <section class="tab-view" id="tab-calculator-config">
+          
+          <div class="card-box" style="max-width: 800px;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Kalkulyator va Chegirmalar Tizimi</h3>
+                <p class="card-subtitle">Saytdagi interaktiv kalkulyator uchun ulgurji foizlar va brendlash tariflari</p>
+              </div>
+            </div>
+
+            <form id="calcSettingsForm" onsubmit="saveCalcSettings(event)">
+              
+              <div class="settings-section-title">Ulgurji Chegirma Bosqichlari (%)</div>
+              <div class="form-row-3">
+                <div class="form-group">
+                  <label class="form-label">100+ dona uchun chegirma (%)</label>
+                  <input type="number" id="discount100" class="form-input" value="5" min="0" max="50" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">250+ dona uchun chegirma (%)</label>
+                  <input type="number" id="discount250" class="form-input" value="10" min="0" max="50" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">500+ dona uchun chegirma (%)</label>
+                  <input type="number" id="discount500" class="form-input" value="15" min="0" max="50" required>
+                </div>
+              </div>
+
+              <div class="settings-section-title" style="margin-top: 20px;">Qo'shimcha Xizmatlar Narxlari (so'm / dona)</div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label">UV to'liq rangli bosma narxi</label>
+                  <input type="number" id="costUvPrint" class="form-input" value="15000" step="1000" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Relief / Zarbosma qo'shimcha narxi</label>
+                  <input type="number" id="costFoilStamp" class="form-input" value="20000" step="1000" required>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label">Magnitli Luks quti qo'shimcha narxi</label>
+                  <input type="number" id="costLuxuryBox" class="form-input" value="25000" step="1000" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Yog'och VIP quti qo'shimcha narxi</label>
+                  <input type="number" id="costWoodenBox" class="form-input" value="50000" step="1000" required>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="margin-top: 20px;">
+                <i class="fa-solid fa-floppy-disk"></i> Kalkulyator Sozlamalarini Saqlash
+              </button>
+            </form>
+          </div>
+
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- TAB 5: SYSTEM SETTINGS -->
+        <!-- ================================================================= -->
+        <section class="tab-view" id="tab-settings">
+          
+          <div class="card-box" style="max-width: 800px;">
+            <div class="card-header">
+              <div>
+                <h3 class="card-title">Kompaniya va Aloqa Sozlamalari</h3>
+                <p class="card-subtitle">Saytda aks etuvchi kontakt ma'lumotlari va bildirishnomalar</p>
+              </div>
+            </div>
+
+            <form id="generalSettingsForm" onsubmit="saveGeneralSettings(event)">
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label">Kompaniya Nomi</label>
+                  <input type="text" id="settingCompanyName" class="form-input" value="Giftify Business" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Asosiy Telefon Raqam</label>
+                  <input type="text" id="settingPhone" class="form-input" value="+998 (90) 123-45-67" required>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label">Telegram Username (Murojaat uchun)</label>
+                  <input type="text" id="settingTelegram" class="form-input" value="@botirjonov_social" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Rasmiy Email</label>
+                  <input type="email" id="settingEmail" class="form-input" value="info@giftify.uz" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Showroom / Ofis Manzili</label>
+                <input type="text" id="settingAddress" class="form-input" value="Toshkent sh., Amir Temur shoh ko'chasi, 107B" required>
+              </div>
+
+              <div class="settings-section-title" style="margin-top: 24px;">Admin Parolini O'zgartirish</div>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label class="form-label">Yangi Admin Login</label>
+                  <input type="text" id="newAdminLogin" class="form-input" placeholder="admin">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">Yangi Admin Parol</label>
+                  <input type="password" id="newAdminPassword" class="form-input" placeholder="Yangi parol">
+                </div>
+              </div>
+
+              <!-- Supabase Cloud DB Connection -->
+              <div class="settings-section-title" style="margin-top: 24px;">
+                <i class="fa-solid fa-cloud"></i> Supabase Bulutli Baza Ulanishi (100% Bepul)
+              </div>
+              <div style="background: rgba(16, 185, 129, 0.08); border: 1px dashed var(--emerald-500); padding: 14px; border-radius: var(--radius-md); margin-bottom: 16px;">
+                <div style="font-size: 0.82rem; color: #cbd5e1; line-height: 1.5;">
+                  ⚡ <strong>Supabase</strong> orqali dunyoning istalgan chekkasidan kelgan arizalar darhol real-vaqtda admin panelingizda sinxron paydo bo'ladi.
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Supabase Project URL</label>
+                <input type="url" id="settingSupabaseUrl" class="form-input" placeholder="https://xyzcompany.supabase.co">
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Supabase Anon / Public API Key</label>
+                <input type="password" id="settingSupabaseKey" class="form-input" placeholder="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...">
+              </div>
+
+              <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <button type="submit" class="btn btn-primary">
+                  <i class="fa-solid fa-check"></i> Barcha Sozlamalarni Saqlash
+                </button>
+                <button type="button" class="btn btn-outline" onclick="testSupabaseConnection()">
+                  <i class="fa-solid fa-plug"></i> Ulanishni Tekshirish
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </section>
+
+      </div>
+
+    </main>
+
+  </div>
+
+  <!-- MODAL: ADD / EDIT PRODUCT -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-card">
+      <button class="modal-close-btn" onclick="closeProductModal()">&times;</button>
+      <h3 class="modal-title" id="productModalHeading">Yangi Sovg'a To'plami Qo'shish</h3>
+      <p class="modal-sub">Katalogda aks etuvchi to'liq ma'lumotlarni kiriting</p>
+
+      <form id="productForm" onsubmit="handleProductFormSubmit(event)">
+        <input type="hidden" id="editProductId" value="">
+
+        <div class="form-group">
+          <label class="form-label">To'plam Nomi *</label>
+          <input type="text" id="prodTitle" class="form-input" placeholder="Masalan: Luxury Executive VIP Set" required>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Kategoriya *</label>
+            <select id="prodCategory" class="form-select" required>
+              <option value="giftbox">Gift Box To'plamlar</option>
+              <option value="accessories">Aksessuarlar</option>
+              <option value="vip">VIP & Premium</option>
+              <option value="office">Ofis & Welcome Pack</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Narxi (so'm / dona) *</label>
+            <input type="number" id="prodPrice" class="form-input" placeholder="380000" required>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">Minimal Buyurtma Soni (dona) *</label>
+            <input type="number" id="prodMinOrder" class="form-input" value="20" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Belgi / Badge (Ixtiyoriy)</label>
+            <input type="text" id="prodTag" class="form-input" placeholder="Masalan: 🔥 Top Choice yoki ⭐ Bestseller">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Rasm URL Manzili (Unsplash yoki to'g'ridan-to'g'ri link) *</label>
+          <input type="url" id="prodImage" class="form-input" placeholder="https://images.unsplash.com/photo-..." required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">To'plam Tavsifi *</label>
+          <textarea id="prodDesc" class="form-textarea" placeholder="Mahsulot haqida batafsil ma'lumot..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">To'plam Tarkibiy Qismlari (Vergul bilan ajrating)</label>
+          <input type="text" id="prodItems" class="form-input" placeholder="LED Termos, Charm Bloknot, Lazer Ruchka, Luks Quti">
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" onclick="closeProductModal()">Bekor qilish</button>
+          <button type="submit" class="btn btn-primary" id="saveProductBtn">Saqlash</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL: ORDER DETAILS & STATUS UPDATE -->
+  <div class="modal-overlay" id="orderDetailsModal">
+    <div class="modal-card" style="max-width: 650px;">
+      <button class="modal-close-btn" onclick="closeOrderDetailsModal()">&times;</button>
+      <h3 class="modal-title">Ariza Tafsilotlari #<span id="detailOrderId">101</span></h3>
+      <p class="modal-sub">Kelib tushgan korporativ mijoz so'rovi</p>
+
+      <div class="order-detail-view" id="orderDetailContent">
+        <!-- Injected via JS -->
+      </div>
+
+      <div class="modal-footer" style="margin-top: 24px;">
+        <button type="button" class="btn btn-outline" onclick="closeOrderDetailsModal()">Yopish</button>
+        <a href="#" id="detailTelegramLink" target="_blank" class="btn btn-primary">
+          <i class="fa-brands fa-telegram"></i> Telegramda Yozish
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN TOAST NOTIFICATION -->
+  <div class="admin-toast" id="adminToast">
+    <div class="admin-toast-icon"><i class="fa-solid fa-circle-check"></i></div>
+    <div class="admin-toast-text" id="adminToastMsg">Muvaffaqiyatli saqlandi!</div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-client.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
