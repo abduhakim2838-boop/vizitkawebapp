@@ -1432,6 +1432,165 @@ body.admin-body {
   width: 100%;
 }
 
+/* -- Image Source Tabs -- */
+.img-source-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.img-tab {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.img-tab:hover {
+  background: rgba(255,255,255,0.08);
+  color: var(--text-secondary);
+}
+
+.img-tab.active {
+  background: rgba(223, 177, 65, 0.12);
+  border-color: var(--gold-400);
+  color: var(--gold-400);
+}
+
+/* -- Drop Zone -- */
+.file-drop-zone {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255,255,255,0.03);
+  border: 2px dashed var(--border-gold);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all 0.25s ease;
+  user-select: none;
+}
+
+.file-drop-zone:hover,
+.file-drop-zone.drag-over {
+  background: rgba(223, 177, 65, 0.08);
+  border-color: var(--gold-400);
+}
+
+.file-drop-zone > i {
+  font-size: 26px;
+  color: var(--gold-400);
+  flex-shrink: 0;
+}
+
+.drop-zone-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.drop-zone-text strong {
+  font-size: 13px;
+  color: var(--text-main);
+}
+
+.drop-zone-text span {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.drop-zone-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--gold-400);
+  background: rgba(223,177,65,0.12);
+  border-radius: 20px;
+  padding: 4px 10px;
+  flex-shrink: 0;
+}
+
+/* -- Upload Progress -- */
+.upload-status {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.upload-progress-bar {
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.upload-progress-fill {
+  height: 100%;
+  background: var(--gold-gradient);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+  width: 0%;
+}
+
+.upload-status span {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* -- Upload File Info -- */
+.upload-file-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  border-radius: var(--radius-sm);
+  margin-top: 8px;
+}
+
+.upload-file-info span {
+  flex: 1;
+  font-size: 12px;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn-remove-img {
+  background: rgba(244, 63, 94, 0.15);
+  border: 1px solid rgba(244, 63, 94, 0.3);
+  color: var(--rose-400);
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 12px;
+  flex-shrink: 0;
+  transition: all 0.2s;
+}
+
+.btn-remove-img:hover {
+  background: rgba(244, 63, 94, 0.3);
+}
+
 /* ==========================================================================
    RESPONSIVE
    ========================================================================== */

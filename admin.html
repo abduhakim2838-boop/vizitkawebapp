@@ -561,49 +561,101 @@
           </div>
 
           <div class="img-input-section">
-            <div class="form-group">
-              <label class="form-label"><i class="fa-solid fa-link"></i> Rasm URL Manzili *</label>
-              <input type="url" id="prodImage" class="form-input" placeholder="https://images.unsplash.com/photo-..." oninput="previewProductImage(this.value)" required>
+
+            <!-- TAB: Upload or URL -->
+            <div class="img-source-tabs">
+              <button type="button" class="img-tab active" id="tabUpload" onclick="switchImgTab('upload')">
+                <i class="fa-solid fa-upload"></i> Qurilmadan Yuklash
+              </button>
+              <button type="button" class="img-tab" id="tabUrl" onclick="switchImgTab('url')">
+                <i class="fa-solid fa-link"></i> URL Manzil
+              </button>
             </div>
 
-            <!-- Quick Unsplash Image Picker -->
-            <div class="quick-img-picker">
-              <div class="quick-img-label"><i class="fa-solid fa-bolt"></i> Tezkor Unsplash rasmlar:</div>
-              <div class="quick-img-grid" id="quickImgGrid">
-                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80')" title="Luxury Gift Box">
-                  <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=200&q=60" alt="Gift Box">
-                  <span>Gift Box</span>
+            <!-- UPLOAD PANEL -->
+            <div id="imgUploadPanel">
+              <!-- Hidden real file input -->
+              <input type="file" id="prodImageFile" accept="image/*" capture="environment"
+                     style="display:none;" onchange="handleImageFileUpload(this)">
+
+              <div class="file-drop-zone" id="fileDropZone"
+                   onclick="document.getElementById('prodImageFile').click()"
+                   ondragover="event.preventDefault(); this.classList.add('drag-over')"
+                   ondragleave="this.classList.remove('drag-over')"
+                   ondrop="handleImageDrop(event)">
+                <i class="fa-solid fa-camera-retro"></i>
+                <div class="drop-zone-text">
+                  <strong>Rasm tanlash yoki kamera</strong>
+                  <span>Telefon yoki kompyuterdan tanlang • Avtomatik siqiladi</span>
                 </div>
-                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80')" title="VIP Luxury">
-                  <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=200&q=60" alt="VIP">
-                  <span>VIP Set</span>
-                </div>
-                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=800&q=80')" title="Business Set">
-                  <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=200&q=60" alt="Business">
-                  <span>Business</span>
-                </div>
-                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1608156639585-b3a032ef9689?auto=format&fit=crop&w=800&q=80')" title="Tech Gadget">
-                  <img src="https://images.unsplash.com/photo-1608156639585-b3a032ef9689?auto=format&fit=crop&w=200&q=60" alt="Tech">
-                  <span>Tech</span>
-                </div>
-                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80')" title="Thermos">
-                  <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=200&q=60" alt="Thermos">
-                  <span>Termos</span>
-                </div>
-                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80')" title="Notebook">
-                  <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=200&q=60" alt="Notebook">
-                  <span>Bloknot</span>
-                </div>
-                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80')" title="Office">
-                  <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=200&q=60" alt="Office">
-                  <span>Ofis</span>
-                </div>
-                <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&w=800&q=80')" title="Eco">
-                  <img src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&w=200&q=60" alt="Eco">
-                  <span>Eco</span>
+                <div class="drop-zone-badge">Bosing yoki sudrang</div>
+              </div>
+
+              <div class="upload-status" id="uploadStatus" style="display:none;">
+                <div class="upload-progress-bar"><div class="upload-progress-fill" id="uploadProgressFill"></div></div>
+                <span id="uploadStatusText">Siqilmoqda...</span>
+              </div>
+
+              <div class="upload-file-info" id="uploadFileInfo" style="display:none;">
+                <i class="fa-solid fa-circle-check" style="color:var(--emerald-400)"></i>
+                <span id="uploadFileInfoText">Rasm yuklandi</span>
+                <button type="button" class="btn-remove-img" onclick="removeUploadedImage()" title="O'chirish">
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </div>
+
+              <!-- Hidden base64 storage -->
+              <input type="hidden" id="prodImageBase64" value="">
+            </div>
+
+            <!-- URL PANEL -->
+            <div id="imgUrlPanel" style="display:none;">
+              <div class="form-group" style="margin:0;">
+                <input type="url" id="prodImage" class="form-input"
+                       placeholder="https://images.unsplash.com/photo-..."
+                       oninput="previewProductImage(this.value)">
+              </div>
+
+              <!-- Quick Unsplash Image Picker -->
+              <div class="quick-img-picker">
+                <div class="quick-img-label"><i class="fa-solid fa-bolt"></i> Tezkor Unsplash rasmlar:</div>
+                <div class="quick-img-grid" id="quickImgGrid">
+                  <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=800&q=80')" title="Luxury Gift Box">
+                    <img src="https://images.unsplash.com/photo-1549465220-1a8b9238cd48?auto=format&fit=crop&w=200&q=60" alt="Gift Box">
+                    <span>Gift Box</span>
+                  </div>
+                  <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=800&q=80')" title="VIP Luxury">
+                    <img src="https://images.unsplash.com/photo-1627123424574-724758594e93?auto=format&fit=crop&w=200&q=60" alt="VIP">
+                    <span>VIP Set</span>
+                  </div>
+                  <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=800&q=80')" title="Business Set">
+                    <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&w=200&q=60" alt="Business">
+                    <span>Business</span>
+                  </div>
+                  <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1608156639585-b3a032ef9689?auto=format&fit=crop&w=800&q=80')" title="Tech Gadget">
+                    <img src="https://images.unsplash.com/photo-1608156639585-b3a032ef9689?auto=format&fit=crop&w=200&q=60" alt="Tech">
+                    <span>Tech</span>
+                  </div>
+                  <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=800&q=80')" title="Thermos">
+                    <img src="https://images.unsplash.com/photo-1517256064527-09c73fc73e38?auto=format&fit=crop&w=200&q=60" alt="Thermos">
+                    <span>Termos</span>
+                  </div>
+                  <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80')" title="Notebook">
+                    <img src="https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=200&q=60" alt="Notebook">
+                    <span>Bloknot</span>
+                  </div>
+                  <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=800&q=80')" title="Office">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=200&q=60" alt="Office">
+                    <span>Ofis</span>
+                  </div>
+                  <div class="quick-img-item" onclick="selectQuickImage('https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&w=800&q=80')" title="Eco">
+                    <img src="https://images.unsplash.com/photo-1607344645866-009c320c5ab8?auto=format&fit=crop&w=200&q=60" alt="Eco">
+                    <span>Eco</span>
+                  </div>
                 </div>
               </div>
             </div>
+
           </div>
         </div>
 

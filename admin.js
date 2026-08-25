@@ -766,6 +766,16 @@ window.openNewProductModal = function() {
   document.getElementById('productModalHeading').textContent = "Yangi Sovg'a To'plami Qo'shish";
   document.getElementById('editProductId').value = '';
   document.getElementById('productForm').reset();
+  // Reset image state
+  const b64 = document.getElementById('prodImageBase64');
+  if (b64) b64.value = '';
+  const fileInput = document.getElementById('prodImageFile');
+  if (fileInput) fileInput.value = '';
+  const fileInfo = document.getElementById('uploadFileInfo');
+  if (fileInfo) fileInfo.style.display = 'none';
+  const dropZone = document.getElementById('fileDropZone');
+  if (dropZone) dropZone.style.display = '';
+  switchImgTab('upload');
   previewProductImage('');
   document.getElementById('productModal').classList.add('active');
 };
@@ -781,11 +791,36 @@ window.openEditProductModal = function(id) {
   document.getElementById('prodPrice').value = product.price;
   document.getElementById('prodMinOrder').value = product.minOrder;
   document.getElementById('prodTag').value = product.tag || '';
-  document.getElementById('prodImage').value = product.image;
   document.getElementById('prodDesc').value = product.desc;
   document.getElementById('prodItems').value = product.items || '';
-  previewProductImage(product.image);
 
+  // Restore image: detect base64 vs URL
+  if (product.image && product.image.startsWith('data:')) {
+    // It's a base64 uploaded image
+    const b64 = document.getElementById('prodImageBase64');
+    if (b64) b64.value = product.image;
+    const urlInput = document.getElementById('prodImage');
+    if (urlInput) urlInput.value = '';
+    const fileInfo = document.getElementById('uploadFileInfo');
+    const fileInfoText = document.getElementById('uploadFileInfoText');
+    const dropZone = document.getElementById('fileDropZone');
+    if (fileInfo) fileInfo.style.display = '';
+    if (fileInfoText) fileInfoText.textContent = 'Yuklangan rasm (tahrirlash rejimi)';
+    if (dropZone) dropZone.style.display = 'none';
+    switchImgTab('upload');
+  } else {
+    // It's a URL
+    const b64 = document.getElementById('prodImageBase64');
+    if (b64) b64.value = '';
+    const urlInput = document.getElementById('prodImage');
+    if (urlInput) urlInput.value = product.image;
+    const dropZone = document.getElementById('fileDropZone');
+    if (dropZone) dropZone.style.display = '';
+    const fileInfo = document.getElementById('uploadFileInfo');
+    if (fileInfo) fileInfo.style.display = 'none';
+    switchImgTab('url');
+  }
+  previewProductImage(product.image);
   document.getElementById('productModal').classList.add('active');
 };
 
@@ -799,7 +834,7 @@ window.previewProductImage = function(url) {
   const img = document.getElementById('prodImagePreview');
   const placeholder = document.getElementById('prodImagePlaceholder');
   if (!img || !placeholder) return;
-  if (url && url.startsWith('http')) {
+  if (url && (url.startsWith('http') || url.startsWith('data:'))) {
     img.src = url;
     img.style.display = 'block';
     placeholder.style.display = 'none';
@@ -825,10 +860,125 @@ window.selectQuickImage = function(url) {
   event.currentTarget.classList.add('selected');
 };
 
+/* ---- Image Source Tab Switch ---- */
+window.switchImgTab = function(tab) {
+  const uploadPanel = document.getElementById('imgUploadPanel');
+  const urlPanel = document.getElementById('imgUrlPanel');
+  const tabUpload = document.getElementById('tabUpload');
+  const tabUrl = document.getElementById('tabUrl');
+  if (tab === 'upload') {
+    uploadPanel.style.display = '';
+    urlPanel.style.display = 'none';
+    tabUpload.classList.add('active');
+    tabUrl.classList.remove('active');
+  } else {
+    uploadPanel.style.display = 'none';
+    urlPanel.style.display = '';
+    tabUpload.classList.remove('active');
+    tabUrl.classList.add('active');
+  }
+};
+
+/* ---- Canvas Image Compression & Base64 ---- */
+window.handleImageFileUpload = function(input) {
+  const file = input.files[0];
+  if (!file) return;
+  _compressAndStoreImage(file);
+};
+
+window.handleImageDrop = function(event) {
+  event.preventDefault();
+  const dropZone = document.getElementById('fileDropZone');
+  if (dropZone) dropZone.classList.remove('drag-over');
+  const file = event.dataTransfer.files[0];
+  if (!file || !file.type.startsWith('image/')) return;
+  _compressAndStoreImage(file);
+};
+
+function _compressAndStoreImage(file) {
+  const statusBox = document.getElementById('uploadStatus');
+  const statusFill = document.getElementById('uploadProgressFill');
+  const statusText = document.getElementById('uploadStatusText');
+  const fileInfo = document.getElementById('uploadFileInfo');
+  const fileInfoText = document.getElementById('uploadFileInfoText');
+  const dropZone = document.getElementById('fileDropZone');
+
+  // Show progress
+  if (statusBox) { statusBox.style.display = ''; }
+  if (dropZone) dropZone.style.display = 'none';
+  if (statusText) statusText.textContent = 'Rasm o\'qilmoqda...';
+  if (statusFill) { statusFill.style.width = '20%'; }
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    if (statusFill) statusFill.style.width = '50%';
+    if (statusText) statusText.textContent = 'Siqilmoqda...';
+
+    const img = new Image();
+    img.onload = function() {
+      // Compress using canvas: max 900px wide, 0.82 quality
+      const MAX_SIZE = 900;
+      let w = img.width, h = img.height;
+      if (w > MAX_SIZE) { h = Math.round(h * MAX_SIZE / w); w = MAX_SIZE; }
+      if (h > MAX_SIZE) { w = Math.round(w * MAX_SIZE / h); h = MAX_SIZE; }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, w, h);
+
+      if (statusFill) statusFill.style.width = '80%';
+      if (statusText) statusText.textContent = 'Saqlanmoqda...';
+
+      const base64 = canvas.toDataURL('image/jpeg', 0.82);
+      const sizeKb = Math.round((base64.length * 3) / 4 / 1024);
+
+      // Store base64
+      const b64Input = document.getElementById('prodImageBase64');
+      if (b64Input) b64Input.value = base64;
+
+      // Show preview
+      previewProductImage(base64);
+
+      // Update UI
+      if (statusFill) statusFill.style.width = '100%';
+      setTimeout(() => {
+        if (statusBox) statusBox.style.display = 'none';
+        if (fileInfo) fileInfo.style.display = '';
+        if (fileInfoText) fileInfoText.textContent = `${file.name.substring(0, 24)} • ${sizeKb} KB`;
+      }, 400);
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+window.removeUploadedImage = function() {
+  const b64Input = document.getElementById('prodImageBase64');
+  if (b64Input) b64Input.value = '';
+  const fileInput = document.getElementById('prodImageFile');
+  if (fileInput) fileInput.value = '';
+  const fileInfo = document.getElementById('uploadFileInfo');
+  if (fileInfo) fileInfo.style.display = 'none';
+  const dropZone = document.getElementById('fileDropZone');
+  if (dropZone) dropZone.style.display = '';
+  previewProductImage('');
+};
+
 window.handleProductFormSubmit = function(e) {
   e.preventDefault();
   const editId = document.getElementById('editProductId').value;
   let products = getProducts();
+
+  // Prefer uploaded base64, fallback to URL
+  const base64Val = (document.getElementById('prodImageBase64') || {}).value || '';
+  const urlVal = (document.getElementById('prodImage') || {}).value || '';
+  const imageValue = base64Val || urlVal;
+
+  if (!imageValue) {
+    showAdminToast('Iltimos, rasm yuklang yoki URL kiriting!', 'error');
+    return;
+  }
 
   const productData = {
     id: editId ? parseInt(editId, 10) : Date.now(),
@@ -837,7 +987,7 @@ window.handleProductFormSubmit = function(e) {
     price: parseInt(document.getElementById('prodPrice').value, 10),
     minOrder: parseInt(document.getElementById('prodMinOrder').value, 10),
     tag: document.getElementById('prodTag').value.trim(),
-    image: document.getElementById('prodImage').value.trim(),
+    image: imageValue,
     desc: document.getElementById('prodDesc').value.trim(),
     items: document.getElementById('prodItems').value.trim()
   };
@@ -848,7 +998,7 @@ window.handleProductFormSubmit = function(e) {
     showAdminToast('Mahsulot muvaffaqiyatli yangilandi!');
   } else {
     products.push(productData);
-    showAdminToast('Yangi mahsulot katalogga qo‘shildi!');
+    showAdminToast("Yangi mahsulot katalogga qo'shildi!");
   }
 
   saveProducts(products);
@@ -856,10 +1006,10 @@ window.handleProductFormSubmit = function(e) {
 };
 
 window.deleteProduct = function(id) {
-  if (confirm('Haqiqatan ham ushbu mahsulotni o\'chirmoqchimisiz?')) {
+  if (confirm("Haqiqatan ham ushbu mahsulotni o'chirmoqchimisiz?")) {
     let products = getProducts().filter(p => p.id !== id);
     saveProducts(products);
-    showAdminToast('Mahsulot o\'chirildi.');
+    showAdminToast("Mahsulot o'chirildi.");
   }
 };
 
